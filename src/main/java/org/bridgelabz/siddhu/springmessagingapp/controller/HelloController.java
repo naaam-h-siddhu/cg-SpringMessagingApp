@@ -1,10 +1,8 @@
 package org.bridgelabz.siddhu.springmessagingapp.controller;
 
+import org.bridgelabz.siddhu.springmessagingapp.dto.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloController {
@@ -23,6 +21,11 @@ public class HelloController {
     @GetMapping("hello/{name}")
     public String sayHelloUsingPathVariable(@PathVariable String name){
         return "Hello "+name+" from BridgeLabz";
+    }
+    // Post method
+    @PostMapping("/hello/post")
+    public String sayHelloUsingPost(@RequestBody User user){
+        return "Hello "+user.getFirst_name()+" "+user.getLast_name()+" from BridgeLabz";
     }
 
 }
